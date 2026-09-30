@@ -10,7 +10,7 @@ land perfect drops and build the tallest tower you can.
 ![Language](https://img.shields.io/badge/language-C-blue)
 ![Firmware](https://img.shields.io/badge/firmware-official%201.x-lightgrey)
 ![License](https://img.shields.io/badge/license-MIT-green)
-[![Build](https://github.com/King-Kong-341/Flipper-Zero-Stack_Tower/actions/workflows/build.yml/badge.svg)](https://github.com/King-Kong-341/Flipper-Zero-Stack_Tower/actions/workflows/build.yml)
+[![Build](https://github.com/King-Kong-341/Flipper-Zero-Games_Stack_Tower/actions/workflows/build.yml/badge.svg)](https://github.com/King-Kong-341/Flipper-Zero-Games_Stack_Tower/actions/workflows/build.yml)
 
 <img src="docs/screenshots/gameplay.gif" width="49%"> <img src="docs/screenshots/intro.gif" width="49%">
 
@@ -53,7 +53,7 @@ for the Flipper's 128 × 64 black-and-white screen, running smoothly at
 ### Option A — Ready-made app (easiest)
 
 1. Download **[`stack_tower.fap`](stack_tower.fap)** (also attached to every
-   [release](https://github.com/King-Kong-341/Flipper-Zero-Stack_Tower/releases)).
+   [release](https://github.com/King-Kong-341/Flipper-Zero-Games_Stack_Tower/releases)).
 2. Open [qFlipper](https://flipperzero.one/update) and connect your Flipper via USB.
 3. In the **File Manager**, copy the file to `SD Card/apps/Games/`.
 4. On the Flipper: **Menu → Apps → Games → Stack Tower**.
@@ -115,7 +115,7 @@ pixel-accurate, but the orange is just for looks.</sub>
 ## 🗂 Project structure
 
 ```
-Flipper-Zero-Stack_Tower/
+Flipper-Zero-Games_Stack_Tower/
 ├── application.fam          # app manifest (name, icon, category, entry point)
 ├── stack.h                  # shared types, constants (game tuning!), declarations
 ├── stack_main.c             # start-up, main loop (40 fps), input routing
