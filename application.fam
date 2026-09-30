@@ -1,0 +1,13 @@
+App(
+    appid="stack_tower",
+    name="Stack Tower",
+    apptype=FlipperAppType.EXTERNAL,
+    entry_point="stack_tower_app",
+    requires=["gui", "storage", "notification"],
+    stack_size=4 * 1024,
+    fap_category="Games",
+    fap_icon="icon.png",
+    fap_version="1.0",
+    fap_description="Faithful remake of the Stack arcade game in isometric 3D. Drop the slab, hit perfects, build the tallest tower. Sound, vibration and LED.",
+    fap_author="Toni",
+)
