@@ -12,136 +12,101 @@ land perfect drops and build the tallest tower you can.
 ![License](https://img.shields.io/badge/license-MIT-green)
 [![Build](https://github.com/King-Kong-341/Flipper-Zero-Games_Stack_Tower/actions/workflows/build.yml/badge.svg)](https://github.com/King-Kong-341/Flipper-Zero-Games_Stack_Tower/actions/workflows/build.yml)
 
-<img src="docs/screenshots/gameplay.gif" width="49%"> <img src="docs/screenshots/intro.gif" width="49%">
+<img src="images/gameplay.gif" width="49%"> <img src="images/intro.gif" width="49%">
 
 </div>
 
 ---
 
-## What is this?
+## 📁 What's in here?
 
-Stack Tower is a faithful remake of the hit mobile game **Stack** for the
-Flipper Zero. A slab slides back and forth over your tower — press **OK** to
-drop it. Whatever hangs over the edge is sliced off and tumbles down, so
-your tower gets narrower with every miss. Land a slab **exactly** on the one
-below and you lose nothing at all; chain eight of those perfect drops and
-the slab even grows back. Miss the tower completely and it's game over —
-the camera zooms out and shows off the whole tower you built.
+| Folder | What it is | Who needs it |
+|---|---|---|
+| 📦 **[`Stack Tower/`](Stack%20Tower/)** | the finished game: **`stack_tower.fap`** | everyone — this is the file for your Flipper |
+| 🧩 [`source/`](source/) | the C source code | only if you want to build or change the game |
+| 🖼 [`images/`](images/) | the pictures on this page | — |
 
-Everything is drawn in isometric 3D by a small software renderer written
-for the Flipper's 128 × 64 black-and-white screen, running smoothly at
-40 fps. One button, simple rules, very hard to put down.
+## 🎯 What is this?
 
-## ✨ Features
-
-| | |
-|---|---|
-| 🧱 **Original rules** | Slabs slide in alternately along both axes, overhangs are sliced off, perfect drops keep the size, 8 perfects in a row make the slab grow, 1 point per slab, slowly getting faster |
-| 🎲 **Isometric 3D** | Real 3D tower with lit top, light and dark sides, falling cut-off pieces, a camera that rises with the tower and zooms out to show the whole thing at game over |
-| ✨ **Perfect effects** | Expanding ring on every perfect drop, rising musical notes (pentatonic scale) with every perfect in a row, a special chime when the slab grows |
-| 🎬 **Intro animation** | Slabs fall onto the pillar, the logo drops in letter by letter, the menu slides up (skippable, can be turned off) |
-| 🤖 **Live title screen** | An autopilot keeps stacking a tower in the background — and lets it crumble when it gets too high |
-| 🌗 **3 backgrounds** | **Day** (clean), **Dots** (parallax dot grid that scrolls as you climb) and **Night** (dark mode with twinkling stars) |
-| ⏸ **Pause menu** | Resume, restart or go back to the menu at any time |
-| 📈 **Stats** | Best score, games played, slabs stacked, perfect drops, best perfect streak, average score, perfect rate |
-| ❓ **How to play** | 3 help pages with small animated demos |
-| 🔊 **Sound · vibration · LED** | Different sounds for every event, short haptic taps, LED colours (blue = perfect, cyan = grow, red = game over, green = new best). Each switchable, 3 volume levels |
-| 💾 **Saved automatically** | Settings and stats live on the SD card |
+A faithful remake of the hit mobile game **Stack**. A slab slides back and
+forth over your tower — press **OK** to drop it. Whatever hangs over the
+edge is sliced off, so your tower gets narrower with every miss. Land a
+slab **exactly** on the one below and you lose nothing. Miss the tower
+completely and it's game over — the camera zooms out and shows the whole
+tower you built. One button, simple rules, very hard to put down.
 
 ## 📥 Installation
 
-### Option A — Ready-made app (easiest)
+1. Open the folder **[`Stack Tower`](Stack%20Tower/)** and click
+   **`stack_tower.fap`** → **Download** (the ⬇ button on the right).
+   It's also on the [Releases page](https://github.com/King-Kong-341/Flipper-Zero-Games_Stack_Tower/releases).
+2. Open [qFlipper](https://flipperzero.one/update) on your computer and
+   connect your Flipper via USB.
+3. In qFlipper's **File Manager**, copy the file to **`SD Card/apps/Games/`**.
+4. On the Flipper: **Menu → Apps → Games → Stack Tower**. Have fun!
 
-1. Download **[`stack_tower.fap`](stack_tower.fap)** (also attached to every
-   [release](https://github.com/King-Kong-341/Flipper-Zero-Games_Stack_Tower/releases)).
-2. Open [qFlipper](https://flipperzero.one/update) and connect your Flipper via USB.
-3. In the **File Manager**, copy the file to `SD Card/apps/Games/`.
-4. On the Flipper: **Menu → Apps → Games → Stack Tower**.
-
-> Built for the **official firmware 1.x** (SDK 1.4.3). If your firmware is
-> much newer or older and the app refuses to start, build it yourself (Option B).
-
-### Option B — Build from source
-
-You need [Python 3](https://www.python.org/downloads/) and
-[`ufbt`](https://github.com/flipperdevices/flipperzero-ufbt):
-
-```bash
-pip install ufbt
-python -m ufbt            # builds dist/stack_tower.fap
-python -m ufbt launch     # builds, installs and starts it on a connected Flipper
-```
-
-Or use the helper scripts in [`scripts/`](scripts/) (`build.ps1` / `build.sh`,
-`install.ps1` / `install.sh`). Close qFlipper first — it blocks the USB port.
+> Made for the **official Flipper firmware 1.x**. If the app doesn't start
+> on your firmware, build it yourself (see the end of this page).
 
 ## 🎮 How to play
 
 | Key | In the game | In menus |
 |---|---|---|
 | **OK** | drop the slab | select |
-| ◀ ▶ ▲ ▼ | drop the slab too (like tapping anywhere) | move / change a value |
-| **Back** | pause menu | one screen back · on the title screen: exit |
+| ◀ ▶ ▲ ▼ | drop the slab too | move / change a value |
+| **Back** | pause menu | go back · on the title screen: exit |
 
-1. The slab slides over the tower — press **OK** when it lines up.
-2. The part hanging over the edge is **sliced off**. Your next slab is only
-   as big as what's left.
-3. Land it **exactly** (a small tolerance is allowed) for a **perfect**: a ring
-   flashes, a note plays and nothing is lost. Every perfect in a row plays a
-   higher note.
-4. From the **8th perfect in a row** on, every perfect makes the slab
-   **grow** back a little, up to its original size.
-5. Miss the tower completely and it's **game over**. Each slab is 1 point.
+- **Slice:** the part hanging over the edge is cut off — the next slab is
+  only as big as what's left.
+- **Perfect:** land it exactly and nothing is lost. A ring flashes and a note
+  plays — every perfect in a row plays a higher note.
+- **Grow back:** from the **8th perfect in a row** on, the slab grows back a
+  little with every perfect.
+- **Game over:** miss the tower completely. Every slab is 1 point, and the
+  slabs slowly get faster.
 
-📖 **Everything in detail: [User Guide](docs/USER_GUIDE.md)**
+## ✨ Features
+
+- 🎲 **Isometric 3D** at 40 fps — falling pieces, a camera that rises with the
+  tower and a zoom-out over the whole tower at game over
+- 🎬 **Intro animation** and a live title screen where an autopilot stacks
+  (and crumbles) a tower
+- 🌗 **3 backgrounds:** Day, Dots (moves as you climb) and Night (dark mode
+  with twinkling stars)
+- 🔊 **Sound, vibration & LED** for every event — blue for a perfect, cyan
+  when the slab grows, red for game over, green for a new best
+- ⚙️ **Settings:** sound, volume, vibration, LED, background, intro
+- 📈 **Stats:** best score, games, slabs, perfects, best streak, average,
+  perfect rate — saved on the SD card
+- ⏸ **Pause menu** and **how-to-play pages** with little animated demos
 
 ## 🖼 Screens
 
 | | | |
 |:-:|:-:|:-:|
-| <img src="docs/screenshots/title.png"> | <img src="docs/screenshots/gameplay.png"> | <img src="docs/screenshots/perfect.png"> |
-| Title screen | Stacking | Perfect drop |
-| <img src="docs/screenshots/slice.png"> | <img src="docs/screenshots/game_over_new_best.png"> | <img src="docs/screenshots/pause.png"> |
-| Overhang sliced off | Game over — new best | Pause |
-| <img src="docs/screenshots/theme_night.png"> | <img src="docs/screenshots/theme_dots.png"> | <img src="docs/screenshots/title_night.png"> |
-| Night background | Dots background | Title at night |
-| <img src="docs/screenshots/settings.png"> | <img src="docs/screenshots/stats.png"> | <img src="docs/screenshots/help_perfect.png"> |
-| Settings | Stats | How to play |
+| <img src="images/title.png"> | <img src="images/perfect.png"> | <img src="images/slice.png"> |
+| Title screen | Perfect drop | Overhang sliced off |
+| <img src="images/game_over_new_best.png"> | <img src="images/pause.png"> | <img src="images/theme_night.png"> |
+| Game over — new best | Pause | Night background |
+| <img src="images/settings.png"> | <img src="images/stats.png"> | |
+| Settings | Stats | |
 
-<sub>Screens and GIFs are rendered on a PC with the Flipper's real fonts using
-the preview tool in [`tools/flipper_preview`](tools/flipper_preview/) — they are
-pixel-accurate, but the orange is just for looks.</sub>
+## 🛠 Build it yourself
 
-## 🗂 Project structure
+Only needed if the ready-made file doesn't work on your firmware or you want
+to change something. You need [Python 3](https://www.python.org/downloads/):
 
-```
-Flipper-Zero-Games_Stack_Tower/
-├── application.fam          # app manifest (name, icon, category, entry point)
-├── stack.h                  # shared types, constants (game tuning!), declarations
-├── stack_main.c             # start-up, main loop (40 fps), input routing
-├── stack_game.c             # rules, slicing, perfects, falling pieces, camera, autopilot
-├── stack_render.c           # 1-bit framebuffer, isometric 3D renderer, backgrounds, logo
-├── stack_screens.c          # intro, title, game HUD, pause, game over, settings, stats, help
-├── stack_fx.c               # sound, vibration and LED sequencers
-├── stack_store.c            # settings + stats on the SD card
-├── icon.png / make_icon.py  # 10x10 app icon and the script that draws it
-├── stack_tower.fap          # ready-to-install build
-├── scripts/                 # build / install / preview helpers
-├── tools/flipper_preview/   # PC preview of all screens with the real Flipper fonts
-└── docs/                    # user guide, developer guide, screenshots
+```bash
+pip install ufbt
+cd source
+python -m ufbt            # -> source/dist/stack_tower.fap
+python -m ufbt launch     # or: build, install and start it on a connected Flipper
 ```
 
-Want to make it easier or harder, or understand how the 3D renderer works?
-➡️ **[Developer Guide](docs/DEVELOPMENT.md)**
+Game tuning (speed, perfect tolerance, grow streak) is at the top of
+[`source/stack.h`](source/stack.h).
 
-## 🛠 Built with
+---
 
-- [ufbt](https://github.com/flipperdevices/flipperzero-ufbt) — micro Flipper Build Tool
-- The official [Flipper Zero firmware](https://github.com/flipperdevices/flipperzero-firmware) SDK
-
-Inspired by *Stack* by Ketchapp. This is an independent fan remake and not
-affiliated with Ketchapp.
-
-## 📄 License
-
-MIT — see [LICENSE](LICENSE).
+Inspired by *Stack* by Ketchapp — an independent fan remake, not affiliated
+with Ketchapp. MIT licensed, see [LICENSE](LICENSE).
